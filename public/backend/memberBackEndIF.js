@@ -1,0 +1,26 @@
+/**
+ * Created by jon on 5/4/15.
+ */
+'use strict';
+
+angular.module('dash').factory('Member', ['$resource',
+    function ($resource) {
+        return $resource('member/:memberId', {
+                memberId: '@_id'
+            }, {
+                list: {
+                    method: 'GET',
+                    url: 'members',
+                    isArray: true
+                },
+                get: {
+                    method: 'GET',
+                    url: 'member'
+                },
+                update: {
+                    method: 'PUT'
+                }
+            }
+        );
+    }
+]);
